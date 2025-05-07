@@ -32,10 +32,18 @@ function Show-Menu {
     }
     
     Write-Host "2. Refresh Status"
-    Write-Host "3. EXIT`n"
+    Write-Host "3. Join Telegram Channel" -ForegroundColor Cyan
+    Write-Host "4. EXIT`n"
     
-    $choice = Read-Host "Please select an option (1-3)"
+    $choice = Read-Host "Please select an option (1-4)"
     return $choice
+}
+
+function Open-TelegramChannel {
+    $telegramLink = "https://t.me/HelpTechDz07"
+    Write-Host "`nOpening Telegram Channel: $telegramLink" -ForegroundColor Cyan
+    Start-Process $telegramLink
+    Read-Host "`nPress ENTER to continue..."
 }
 
 function Set-ServiceStatus {
@@ -136,7 +144,8 @@ while ($true) {
     switch ($choice) {
         "1" { Toggle-WindowsUpdate }
         "2" { continue }  # Just refreshes
-        "3" { exit }
+        "3" { Open-TelegramChannel }
+        "4" { exit }
         default { Write-Host "Invalid option. Please try again." -ForegroundColor Red }
     }
 }
